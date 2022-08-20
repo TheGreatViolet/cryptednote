@@ -1,6 +1,11 @@
 <script lang="ts">
+  import Navbar from "./components/Navbar.svelte";
 </script>
 
-<template>
-  <p class="text-zinc-700">Placeholder</p>
-</template>
+<div class="flex flex-col h-screen">
+  <Navbar />
+
+  <div class="flex-1 p-4 bg-primary ">
+    <p class="text-secondary">test</p>
+  </div>
+</div>
