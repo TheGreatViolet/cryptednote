@@ -1,4 +1,6 @@
 <script lang="ts">
 </script>
 
-<template> ballz </template>
+<template>
+  <p class="text-zinc-700">Placeholder</p>
+</template>
