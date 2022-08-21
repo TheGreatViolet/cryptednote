@@ -2,10 +2,25 @@
 import Navbar from "../components/Navbar.svelte";
 ---
 
-<div class="flex flex-col h-screen">
+<div class="flex flex-col h-screen w-screen">
   <Navbar client:load />
 
-  <div class="flex-1 p-4 bg-primary">
-    <p class="text-secondary">test</p>
+  <div class="flex-1 w-full p-4 bg-primary">
+    <div class="text-center w-full h-fit pt-16">
+      <p class="text-secondary text-7xl font-body font-bold">
+        Notes made simple and secure.
+      </p>
+
+      <p class="py-6 text-secondary text-2xl font-body">
+        CryptedNote gives you a simple and secure way to store your notes. <br
+        /> Notes are encrypted in your browser before reaching our servers.
+      </p>
+
+      <button
+        class="py-2 px-4 rounded-md bg-accent text-secondary hover:bg-lightAccent transition-colors duration-200 ease-in-out"
+      >
+        Get Started
+      </button>
+    </div>
   </div>
 </div>
