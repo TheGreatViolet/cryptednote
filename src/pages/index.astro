@@ -1,5 +1,6 @@
 ---
 import Navbar from "../components/Navbar.svelte";
+import PrimaryButton from "../components/buttons/PrimaryButton.svelte";
 ---
 
 <div class="flex flex-col h-screen w-screen">
@@ -16,11 +17,9 @@ import Navbar from "../components/Navbar.svelte";
         /> Notes are encrypted in your browser before reaching our servers.
       </p>
 
-      <button
-        class="py-2 px-4 rounded-md bg-accent text-secondary hover:bg-lightAccent transition-colors duration-200 ease-in-out"
-      >
-        Get Started
-      </button>
+      <PrimaryButton client:load>
+        <a href="/signup/">Get Started</a>
+      </PrimaryButton>
     </div>
   </div>
 </div>
