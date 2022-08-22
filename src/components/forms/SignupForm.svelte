@@ -34,13 +34,21 @@
       return;
     }
 
-    signUp(user.email, user.password)
-      .then(() => {
-        alert("Account created successfully.");
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    signUp(user.email, user.password, (res) => {
+      if (res === "success") {
+        alert("Sign up successful.");
+        return;
+      }
+
+      switch (res) {
+        case "auth/email-already-in-use":
+          alert("Email already in use.");
+          break;
+        case "auth/invalid-email":
+          alert("Invalid email.");
+          break;
+      }
+    });
 
     // TODO: Send user data to Firebase server.
   };
@@ -55,28 +63,28 @@ text-secondary font-body text-3xl"
   <form on:submit={onSubmit}>
     <div class="flex flex-col gap-2">
       <input
-        class="w-full p-2 px-4 border-2 text-xl bg-accent border-secondary border-opacity-20 rounded-md cursor-text"
+        class="form-item"
         type="text"
         placeholder="Username"
         bind:value={user.name}
       />
 
       <input
-        class="w-full p-2 px-4 border-2 text-xl bg-accent border-secondary border-opacity-20 rounded-md cursor-text"
+        class="form-item"
         type="text"
         placeholder="Email"
         bind:value={user.email}
       />
 
       <input
-        class="w-full p-2 px-4 border-2 text-xl bg-accent border-secondary border-opacity-20 rounded-md cursor-text"
+        class="form-item"
         type="password"
         placeholder="Password"
         bind:value={user.password}
       />
 
       <input
-        class="w-full p-2 px-4 border-2 text-xl bg-accent border-secondary border-opacity-20 rounded-md cursor-text"
+        class="form-item"
         type="password"
         placeholder="Confirm Password"
         bind:value={user.passwordConfirmation}
@@ -87,4 +95,18 @@ text-secondary font-body text-3xl"
       <!--TODO: Add authentication with oauth service using Firebase authentication-->
     </div>
   </form>
+
+  <p class="text-center text-lg">
+    Already have an account? <a
+      href="/login"
+      class="text-lightAccent opacity-50 hover:opacity-100 duration-200 ease-in-out"
+      >Log in</a
+    >
+  </p>
 </div>
+
+<style>
+  .form-item {
+    @apply w-full p-2 px-4 border-2 text-xl bg-accent border-secondary border-opacity-20 rounded-md cursor-text;
+  }
+</style>
