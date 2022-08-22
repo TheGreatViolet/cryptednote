@@ -1,5 +1,6 @@
 <script lang="ts">
   import PrimaryButton from "../buttons/PrimaryButton.svelte";
+  import { signUp } from "../../functions/firebase/auth";
 
   let user = {
     name: "",
@@ -33,7 +34,13 @@
       return;
     }
 
-    console.log(user);
+    signUp(user.email, user.password)
+      .then(() => {
+        alert("Account created successfully.");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
 
     // TODO: Send user data to Firebase server.
   };
